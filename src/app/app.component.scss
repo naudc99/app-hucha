@@ -1,0 +1,693 @@
+// Variables
+$primary-color: #2563eb;
+$success-color: #16a34a;
+$danger-color: #dc2626;
+$warning-color: #f59e0b;
+$background-color: #f8fafc;
+$card-background: #ffffff;
+$text-primary: #1e293b;
+$text-secondary: #64748b;
+$border-color: #e2e8f0;
+$shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+$shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+// Base styles
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: $background-color;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: $text-primary;
+}
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  background-color: $background-color;
+}
+
+// Header with piggy bank illustration
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.025em;
+  }
+  
+  p {
+    font-size: 1.25rem;
+    color: $text-secondary;
+    margin: 0 0 3rem 0;
+    font-weight: 400;
+  }
+  
+  .piggy-bank {
+    width: 200px;
+    height: 200px;
+    background-color: #f8a8a8;
+    border-radius: 50%;
+    position: relative;
+    margin: 4rem auto;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  
+    .ear {
+      width: 30px;
+      height: 40px;
+      background-color: #f8a8a8;
+      position: absolute;
+      top: -15px;
+      border-radius: 50%;
+  
+      &.left {
+        left: 20px;
+        transform: rotate(-20deg);
+      }
+  
+      &.right {
+        right: 20px;
+        transform: rotate(20deg);
+      }
+    }
+  
+    .eye {
+      width: 8px;
+      height: 8px;
+      background-color: #1f2937;
+      border-radius: 50%;
+      position: absolute;
+      top: 65px;
+  
+      &.left {
+        left: 60px;
+      }
+  
+      &.right {
+        right: 60px;
+      }
+    }
+  
+    .snout {
+      width: 50px;
+      height: 30px;
+      background-color: #f472b6;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+  
+      .nostril {
+        width: 6px;
+        height: 6px;
+        background-color: #1f2937;
+        border-radius: 50%;
+        position: absolute;
+        top: 12px;
+  
+        &.left {
+          left: 10px;
+        }
+  
+        &.right {
+          right: 10px;
+        }
+      }
+    }
+  
+    .coin {
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle at 30% 30%, #fbbf24, #f59e0b);
+      border-radius: 50%;
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      box-shadow: 0 0 0 2px #fff inset;
+    }
+  
+    .slot {
+      width: 40px;
+      height: 5px;
+      background-color: #111;
+      border-radius: 3px;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+  }
+  
+
+}
+
+// Navigation styles
+nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  box-shadow: $shadow;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  
+  button {
+    padding: 0.75rem 1.25rem;
+    margin: 0 0.25rem;
+    border: none;
+    background: transparent;
+    color: $text-secondary;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    flex: 1;
+    
+    &:hover {
+      background: #f1f5f9;
+      color: $text-primary;
+    }
+    
+    &.active {
+      background: $text-primary;
+      color: white;
+      box-shadow: $shadow;
+    }
+  }
+}
+
+// Main content
+main {
+  section {
+    margin-bottom: 2rem;
+    
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: $text-primary;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+  }
+}
+
+// Dashboard layout
+.dashboard {
+  .dashboard-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .total-card,
+  .goal-card {
+    background: $card-background;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: $shadow;
+    border: 1px solid $border-color;
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      
+      .icon {
+        color: $success-color;
+        font-size: 1rem;
+        margin-right: 0.5rem;
+      }
+      
+      .title {
+        font-size: 0.875rem;
+        color: $text-secondary;
+        font-weight: 500;
+      }
+    }
+    
+    .amount {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: $success-color;
+      line-height: 1;
+    }
+  }
+  
+  .goal-card {
+    .progress-container {
+      margin-bottom: 1rem;
+    }
+    
+    progress {
+      width: 100%;
+      height: 0.75rem;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background: #e2e8f0;
+      border: none;
+      margin-bottom: 0.5rem;
+      
+      &::-webkit-progress-bar {
+        background: #e2e8f0;
+        border-radius: 0.5rem;
+      }
+      
+      &::-webkit-progress-value {
+        background: linear-gradient(90deg, $primary-color, #3b82f6);
+        border-radius: 0.5rem;
+      }
+      
+      &::-moz-progress-bar {
+        background: linear-gradient(90deg, $primary-color, #3b82f6);
+        border-radius: 0.5rem;
+      }
+    }
+    
+    .progress-text {
+      font-size: 0.875rem;
+      color: $text-secondary;
+    }
+    
+    .goal-complete {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #166534;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 1rem;
+      border: 1px solid #86efac;
+    }
+  }
+  
+  .movements-card {
+    background: $card-background;
+    border-radius: 1rem;
+    box-shadow: $shadow;
+    border: 1px solid $border-color;
+    padding: 2rem;
+    
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: $text-primary;
+      margin: 0 0 1.5rem 0;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 1rem;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid #f1f5f9;
+        
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        span.positive {
+          color: $success-color;
+          font-weight: 600;
+          min-width: 80px;
+        }
+        
+        span.negative {
+          color: $danger-color;
+          font-weight: 600;
+          min-width: 80px;
+        }
+        
+        .note {
+          flex: 1;
+          margin: 0 1rem;
+          color: $text-primary;
+        }
+        
+        small {
+          color: $text-secondary;
+          font-size: 0.75rem;
+        }
+      }
+    }
+    
+    .no-movements {
+      text-align: center;
+      color: $text-secondary;
+      padding: 2rem;
+    }
+  }
+}
+
+// History section
+.history-card {
+  background: $card-background;
+  border-radius: 1rem;
+  box-shadow: $shadow;
+  border: 1px solid $border-color;
+  padding: 2rem;
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f1f5f9;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      span.positive {
+        color: $success-color;
+        font-weight: 600;
+        min-width: 80px;
+      }
+      
+      span.negative {
+        color: $danger-color;
+        font-weight: 600;
+        min-width: 80px;
+      }
+      
+      .note {
+        flex: 1;
+        margin: 0 1rem;
+        color: $text-primary;
+      }
+      
+      small {
+        color: $text-secondary;
+        font-size: 0.75rem;
+      }
+    }
+  }
+  
+  .no-movements {
+    text-align: center;
+    color: $text-secondary;
+    padding: 2rem;
+  }
+}
+
+// Form styles
+form {
+  background: $card-background;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: $shadow;
+  border: 1px solid $border-color;
+  max-width: 400px;
+  margin: 0 auto;
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: $text-primary;
+    font-size: 0.875rem;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid $border-color;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+    }
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    
+    &:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+    
+    &.withdraw-btn {
+      background: $warning-color;
+      
+      &:hover {
+        background: #d97706;
+      }
+    }
+  }
+}
+
+// Settings styles
+.settings-card,
+.danger-card {
+  background: $card-background;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: $shadow;
+  border: 1px solid $border-color;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  
+  h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $text-primary;
+  }
+  
+  p {
+    color: $text-secondary;
+    margin: 0 0 1rem 0;
+    font-size: 0.875rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: $text-primary;
+    font-size: 0.875rem;
+  }
+  
+  input[type="number"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid $border-color;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+    }
+  }
+  
+  button:not(.danger) {
+    width: 100%;
+    padding: 0.75rem;
+    background: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    
+    &:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.danger-card {
+  border-color: #fecaca;
+  
+  h3 {
+    color: $danger-color;
+  }
+}
+
+// Danger button
+.danger {
+  background: $danger-color !important;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background: #b91c1c !important;
+    transform: translateY(-1px);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem 0.5rem;
+  }
+  
+  header {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    &::after {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  
+  nav {
+    flex-wrap: wrap;
+    
+    button {
+      flex: 1;
+      min-width: 90px;
+      margin: 0.25rem;
+      font-size: 0.75rem;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+  
+  .dashboard {
+    .dashboard-cards {
+      grid-template-columns: 1fr;
+    }
+    
+    .total-card .amount {
+      font-size: 2rem;
+    }
+    
+    .movements-card ul li {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      
+      .note {
+        margin: 0;
+      }
+    }
+  }
+  
+  .history-card ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    
+    .note {
+      margin: 0;
+    }
+  }
+}
+
+// Animations
+.total-card,
+.goal-card,
+.movements-card,
+.history-card,
+.settings-card,
+.danger-card,
+form {
+  animation: slideUp 0.3s ease-out;
+}
+
+.movement {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+  
+    .symbol {
+      font-size: 1.25rem;
+    }
+  
+    .amount {
+      font-size: 1.1rem;
+    }
+  
+    &.positive {
+      color: $success-color;
+  
+      .symbol {
+        color: $success-color;
+      }
+    }
+  
+    &.negative {
+      color: $danger-color;
+  
+      .symbol {
+        color: $danger-color;
+      }
+    }
+  }
+  
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
